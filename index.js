@@ -12,6 +12,8 @@ function handleSubmit(ev) {
     const favoriteColor = f.favoriteColor.value;
     const age = f.age.value;
 
+    const colorDiv = `<div style="background-color: ${favoriteColor}; width: 100px; height: 50px;"></div>`;
+
     // const bold = document.createElement('strong');
     // bold.textContent = name
     // details.appendChild(bold);
@@ -19,10 +21,10 @@ function handleSubmit(ev) {
     details.innerHTML = `
         <ul>
             <li>Name: ${name}</li>
-            <li>Favorite Color: ${favoriteColor}</li>
+            <li>Favorite Color: ${colorDiv}</li>
             <li>Age: ${age}</li>
         </ul>
-    `
+    `;
 
     // //Modify heading and paragraph text/background color
     // heading.textContent = f.firstName.value + ' ' + f.lastName.value;                      
