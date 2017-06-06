@@ -10,7 +10,7 @@ function handleSubmit(ev) {
     let favoriteColor = f.favoriteColor.value.toLowerCase().replace(' ', ''); 
     const name = f.firstName.value;
     
-    details.textContent += name;
+    details.innerHTML += `<strong>${name}</strong>`;
     //Modify heading and paragraph text/background color
     heading.textContent = f.firstName.value + ' ' + f.lastName.value;                      
     // paragraph.textContent = 'Hey ' + f.firstName.value +
