@@ -10,7 +10,7 @@ function handleSubmit(ev) {
     //const favoriteColor = f.favoriteColor.value.toLowerCase().replace(' ', ''); 
 
     const person = {'Name': f.firstName.value, 
-                    'Favorite Color': f.favoriteColor.value, 
+                    'Favorite Color': renderColor(f.favoriteColor.value).outerHTML, 
                     'Age': f.age.value,};
 
     details.appendChild(createList(person));
@@ -51,7 +51,7 @@ function renderColor(color) {
 
 function createListItem(label, value) {
     const item = document.createElement('li');
-    item.textContent = `${label}: ${value}`;
+    item.innerHTML = `${label}: ${value}`;
     return item;
 }
 
