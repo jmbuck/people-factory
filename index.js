@@ -15,9 +15,10 @@ function handleSubmit(ev) {
                                                      f.favoriteColor.value.toLowerCase() + '. Good taste!';
     paragraph.style.backgroundColor = favoriteColor;
     
-    //Modify text to be easier to read if necessary
+    //Modify text to be easier to read if favoriteColor is dark
     if(favoriteColor == 'black' || favoriteColor == 'green' 
-    || favoriteColor.includes('dark') || favoriteColor == 'brown')
+    || favoriteColor.includes('dark') || favoriteColor == 'brown'
+    || favoriteColor == 'purple' || favoriteColor == 'indigo')
         paragraph.style.color = 'white';
     else
         paragraph.style.color = 'black';
