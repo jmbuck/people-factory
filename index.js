@@ -8,11 +8,12 @@ function handleSubmit(ev) {
     const heading = document.querySelector('h1');
     const paragraph = document.querySelector('p#output');
     //const favoriteColor = f.favoriteColor.value.toLowerCase().replace(' ', ''); 
-    const name = f.firstName.value;
-    const favoriteColor = f.favoriteColor.value;
-    const age = f.age.value;
 
-    details.appendChild(createList(name, favoriteColor, age));
+    const person = {'Name': f.firstName.value, 
+                    'Favorite Color': f.favoriteColor.value, 
+                    'Age': f.age.value,};
+
+    details.appendChild(createList(person));
 
     // details.innerHTML = `
     //     <ul>
@@ -48,20 +49,34 @@ function renderColor(color) {
     return div;
 }
 
-function createList(name, color, age) {
-   const list = document.createElement('ul');
-   const nameItem = document.createElement('li');
-   const colorItem = document.createElement('li');
-   const ageItem = document.createElement('li');
+function createListItem(label, value) {
+    const item = document.createElement('li');
+    item.textContent = `${label}: ${value}`;
+    return item;
+}
 
-   nameItem.textContent = `Name: ${name}`;
-   colorItem.innerHTML = `Favorite Color: ${renderColor(color).outerHTML}`;
-   ageItem.textContent = `Age: ${age}`;
+function createList(personData) {
+//    const list = document.createElement('ul');
+//    const nameItem = document.createElement('li');
+//    const colorItem = document.createElement('li');
+//    const ageItem = document.createElement('li');
 
-   list.appendChild(nameItem);
-   list.appendChild(colorItem);
-   list.appendChild(ageItem);
-   return list;
+//    nameItem.textContent = `Name: ${name}`;
+//    colorItem.innerHTML = `Favorite Color: ${renderColor(color).outerHTML}`;
+//    ageItem.textContent = `Age: ${age}`;
+
+//    list.appendChild(nameItem);
+//    list.appendChild(colorItem);
+//    list.appendChild(ageItem);
+//    return list;
+    const list = document.createElement('ul');
+    
+    Object.keys(personData).map(function(label) {
+        const item = createListItem(label, personData[label]);
+        list.appendChild(item);
+    });
+
+    return list;
 }
 
 personForm.addEventListener('submit', handleSubmit);
