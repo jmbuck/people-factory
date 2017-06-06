@@ -12,19 +12,15 @@ function handleSubmit(ev) {
     const favoriteColor = f.favoriteColor.value;
     const age = f.age.value;
 
-    const colorDiv = `<div style="background-color: ${favoriteColor}; width: 100px; height: 50px;"></div>`;
+    details.appendChild(createList(name, favoriteColor, age));
 
-    // const bold = document.createElement('strong');
-    // bold.textContent = name
-    // details.appendChild(bold);
-
-    details.innerHTML = `
-        <ul>
-            <li>Name: ${name}</li>
-            <li>Favorite Color: ${colorDiv}</li>
-            <li>Age: ${age}</li>
-        </ul>
-    `;
+    // details.innerHTML = `
+    //     <ul>
+    //         <li>Name: ${name}</li>
+    //         <li>Favorite Color: ${colorDiv}</li>
+    //         <li>Age: ${age}</li>
+    //     </ul>
+    // `;
 
     // //Modify heading and paragraph text/background color
     // heading.textContent = f.firstName.value + ' ' + f.lastName.value;                      
@@ -41,6 +37,31 @@ function handleSubmit(ev) {
     // else
     //     paragraph.style.color = 'black';
 
+}
+
+function renderColor(color) {
+    const div = document.createElement('div');
+    div.style.backgroundColor = color;
+    div.style.height = '50px';
+    div.style.width = '100px';
+
+    return div;
+}
+
+function createList(name, color, age) {
+   const list = document.createElement('ul');
+   const nameItem = document.createElement('li');
+   const colorItem = document.createElement('li');
+   const ageItem = document.createElement('li');
+
+   nameItem.textContent = `Name: ${name}`;
+   colorItem.innerHTML = `Favorite Color: ${renderColor(color).outerHTML}`;
+   ageItem.textContent = `Age: ${age}`;
+
+   list.appendChild(nameItem);
+   list.appendChild(colorItem);
+   list.appendChild(ageItem);
+   return list;
 }
 
 personForm.addEventListener('submit', handleSubmit);
